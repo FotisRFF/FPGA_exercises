@@ -1,0 +1,26 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.all;
+
+ENTITY mux2_1generic IS
+    GENERIC (WIDTH : INTEGER := 16); -- Geniki parametros gia to eyros ton dedomenon
+    PORT (
+        in0    : IN  STD_LOGIC_VECTOR(WIDTH-1 DOWNTO 0); -- Eisodos 0
+        in1    : IN  STD_LOGIC_VECTOR(WIDTH-1 DOWNTO 0); -- Eisodos 1
+		  in2 	: IN  STD_LOGIC_VECTOR(WIDTH-1 DOWNTO 0); -- Eisodos 2
+		  in3		: IN  STD_LOGIC_VECTOR(WIDTH-1 DOWNTO 0); -- Eisodos 3 
+       sel      : IN  STD_LOGIC_VECTOR(1 DOWNTO 0);      -- 2 bit SELECT                  
+        data_out : OUT STD_LOGIC_VECTOR(WIDTH-1 DOWNTO 0)   -- Exodos dedomenon
+    );
+END mux2_1generic;
+
+ARCHITECTURE behavioral OF mux2_1generic IS
+BEGIN
+   PROCESS (in0, in1, sel)
+    BEGIN
+        IF sel = '0' THEN
+           data_out <= in0;
+        ELSE -- sel = '1'
+           data_out <= in1;
+        END IF;
+    END PROCESS;
+END behavioral;

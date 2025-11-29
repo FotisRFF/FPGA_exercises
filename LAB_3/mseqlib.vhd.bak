@@ -1,0 +1,21 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.all;
+
+ENTITY mseqlib IS
+PORT (
+    clk : IN STD_LOGIC;
+    rst : IN STD_LOGIC;
+    -- ό,τι άλλο χρειάζεται
+);
+END mseqlib;
+
+ARCHITECTURE rtl OF mseqlib IS
+
+    -- εδώ κάνεις instantiation τα modules σου
+    -- πχ:
+    -- U1: entity work.mux4x1generic
+    -- U2: entity work.regnbit
+
+BEGIN
+
+END rtl;
