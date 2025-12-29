@@ -1,0 +1,26 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity data_bus is
+    port (
+
+        AC_in, DR_in, R_in, TR_in, Mem_in : in std_logic_vector(7 downto 0);
+        PC_in : in std_logic_vector(15 downto 0);
+        AC_en, DR_en, R_en, TR_en, Mem_en, PC_low_en, PC_high_en : in std_logic;
+        bus_out : out std_logic_vector(7 downto 0)
+    );
+end data_bus;
+
+
+
+architecture behavioral of data_bus is
+begin
+
+    bus_out <= AC_in when AC_en = '1' else (others => 'Z');
+    bus_out <= DR_in when DR_en = '1' else (others => 'Z');
+    bus_out <= R_in when R_en = '1' else (others => 'Z');
+    bus_out <= TR_in when TR_en = '1' else (others => 'Z');
+    bus_out <= Mem_in when Mem_en = '1' else (others => 'Z');
+    bus_out <= PC_in(7 downto 0) when PC_low_en = '1' else (others => 'Z');
+    bus_out <= PC_in(15 downto 8) when PC_high_en = '1' else (others => 'Z');
+end behavioral;
